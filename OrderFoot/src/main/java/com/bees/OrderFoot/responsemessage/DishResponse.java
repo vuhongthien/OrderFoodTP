@@ -1,4 +1,4 @@
-package com.bees.OrderFoot.ResponseMessage;
+package com.bees.OrderFoot.responsemessage;
 
 import java.time.LocalDateTime;
 

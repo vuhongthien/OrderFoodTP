@@ -1,4 +1,4 @@
-package com.bees.OrderFoot.Utils;
+package com.bees.OrderFoot.utils;
 
 public class DishUtils {
     public static double disCount(float price, float discount) {

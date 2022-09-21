@@ -1,51 +1,41 @@
-package com.bees.OrderFoot.model;
+package com.bees.OrderFoot.dto;
 
-import lombok.Builder;
-import lombok.ToString;
+import com.bees.OrderFoot.model.DishType;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
-@Entity
-
-@Table(name = "tbl_dish")
-public class Dish {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dish_id")
+public class DishDto {
     private Long DishId;
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "type_dish_id", insertable=false, updatable=false)
-    @ToString.Exclude
-    private DishType DishType;
-    @Column(name = "type_dish_id", nullable=false)
+
+
     private Long DishTypeId;
-    @Column(name = "dish_star")
     private int Star;
-    @Column(name = "dish_bought")
+
     private  int Bought;
-    @Column(name = "dish_image")
+
     private  String image;
-    @Column(name = "dish_discount")
+
     private  float discount;
-    @Column(name = "dish_name")
+
     private String DishName;
-    @Column(name = "dish_price")
+
     private float Price;
-    @Column(name = "dish_quantity")
+
     private Long Quantity;
-    @Column(name = "dish_create_at")
+
     private LocalDateTime CreateAt;
-    @Column(name = "dish_end_at")
+
     private LocalDateTime EndAt;
-    @Column(name = "dish_active")
+
     private int Active;
 
-    public Dish(Long dishId, com.bees.OrderFoot.model.DishType dishType, Long dishTypeId, com.bees.OrderFoot.model.Voucher voucher,  int star, int bought, String image, float discount, String dishName, float price, Long quantity, LocalDateTime createAt, LocalDateTime endAt, int active) {
+    public DishDto(Long dishId, Long dishTypeId, int star, int bought, String image, float discount, String dishName, float price, Long quantity, LocalDateTime createAt, LocalDateTime endAt, int active) {
         DishId = dishId;
-        DishType = dishType;
         DishTypeId = dishTypeId;
-
         Star = star;
         Bought = bought;
         this.image = image;
@@ -58,7 +48,7 @@ public class Dish {
         Active = active;
     }
 
-    public Dish() {
+    public DishDto() {
     }
 
     public Long getDishId() {
@@ -69,14 +59,6 @@ public class Dish {
         DishId = dishId;
     }
 
-    public com.bees.OrderFoot.model.DishType getDishType() {
-        return DishType;
-    }
-
-    public void setDishType(com.bees.OrderFoot.model.DishType dishType) {
-        DishType = dishType;
-    }
-
     public Long getDishTypeId() {
         return DishTypeId;
     }
@@ -84,7 +66,6 @@ public class Dish {
     public void setDishTypeId(Long dishTypeId) {
         DishTypeId = dishTypeId;
     }
-
 
     public int getStar() {
         return Star;

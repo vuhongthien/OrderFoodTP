@@ -1,7 +1,5 @@
 package com.bees.OrderFoot.model;
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -14,22 +12,24 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bill_id")
     private Long BillId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "user_id", insertable=false, updatable=false)
     @ToString.Exclude
     private User User;
+    @Column(name = "user_id", nullable = false)
+    private Long UserId;
     @Column(name = "bill_day_set")
     private LocalDateTime DaySet;
     @Column(name = "bill_total_price")
-    private float TotalPrice;
+    private Double TotalPrice;
 
-    public Bill(Long billId, com.bees.OrderFoot.model.User user, LocalDateTime daySet, float totalPrice) {
+    public Bill(Long billId, com.bees.OrderFoot.model.User user, Long userId, LocalDateTime daySet, Double totalPrice) {
         BillId = billId;
         User = user;
+        UserId = userId;
         DaySet = daySet;
         TotalPrice = totalPrice;
     }
-
 
     public Bill() {
     }
@@ -58,11 +58,19 @@ public class Bill {
         DaySet = daySet;
     }
 
-    public float getTotalPrice() {
+    public Double getTotalPrice() {
         return TotalPrice;
     }
 
-    public void setTotalPrice(float totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         TotalPrice = totalPrice;
+    }
+
+    public Long getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(Long userId) {
+        UserId = userId;
     }
 }

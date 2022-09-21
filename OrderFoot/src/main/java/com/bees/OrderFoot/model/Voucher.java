@@ -95,4 +95,5 @@ public class Voucher {
     public void setDishId(Long dishId) {
         DishId = dishId;
     }
+
 }

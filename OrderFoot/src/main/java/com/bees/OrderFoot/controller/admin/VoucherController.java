@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class VoucherController {
     @Autowired
     VoucherServiceImpl voucherService;

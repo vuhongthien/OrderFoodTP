@@ -1,6 +1,6 @@
 package com.bees.OrderFoot.controller.admin;
 
-import com.bees.OrderFoot.ResponseMessage.DishResponse;
+import com.bees.OrderFoot.responsemessage.DishResponse;
 import com.bees.OrderFoot.model.Dish;
 import com.bees.OrderFoot.model.DishType;
 import com.bees.OrderFoot.service.impl.DishServiceImpl;
@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
-import static com.bees.OrderFoot.Utils.DishUtils.disCount;
+import static com.bees.OrderFoot.utils.DishUtils.disCount;
 
 @RestController
 @RequestMapping("/api")

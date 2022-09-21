@@ -12,26 +12,33 @@ public class DetailBill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "detail_bill_id")
     private Long DetailBillId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dish_id")
-    @ToString.Exclude
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "dish_id", insertable=false, updatable=false)
     private Dish Dish;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bill_id")
-    @ToString.Exclude
+    @Column(name = "dish_id")
+    private Long DishId;
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "bill_id", insertable=false, updatable=false)
     private Bill Bill;
+    @Column(name = "bill_id")
+    private Long BillId;
     @Column(name = "detail_bill_quantity")
     private int Quantity;
+    @Column(name = "detail_bill_price")
+    private double Price;
     @Column(name = "detail_bill_total_price")
-    private float TotalPrice;
+    private double TotalPrice;
     @Column(name = "detail_bill_image")
     private String Image;
 
-    public DetailBill(Long detailBillId, com.bees.OrderFoot.model.Dish dish, com.bees.OrderFoot.model.Bill bill, int quantity, float totalPrice, String image) {
+    public DetailBill(Long detailBillId, com.bees.OrderFoot.model.Dish dish, Long dishId, com.bees.OrderFoot.model.Bill bill, Long billId, int quantity, double price, double totalPrice, String image) {
         DetailBillId = detailBillId;
         Dish = dish;
+        DishId = dishId;
         Bill = bill;
+        BillId = billId;
         Quantity = quantity;
+        Price = price;
         TotalPrice = totalPrice;
         Image = image;
     }
@@ -71,11 +78,11 @@ public class DetailBill {
         Quantity = quantity;
     }
 
-    public float getTotalPrice() {
+    public double getTotalPrice() {
         return TotalPrice;
     }
 
-    public void setTotalPrice(float totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         TotalPrice = totalPrice;
     }
 
@@ -85,5 +92,29 @@ public class DetailBill {
 
     public void setImage(String image) {
         Image = image;
+    }
+
+    public Long getDishId() {
+        return DishId;
+    }
+
+    public void setDishId(Long dishId) {
+        DishId = dishId;
+    }
+
+    public Long getBillId() {
+        return BillId;
+    }
+
+    public void setBillId(Long billId) {
+        BillId = billId;
+    }
+
+    public double getPrice() {
+        return Price;
+    }
+
+    public void setPrice(double price) {
+        Price = price;
     }
 }
